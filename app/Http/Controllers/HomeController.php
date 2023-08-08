@@ -79,7 +79,7 @@ class HomeController extends Controller
         $totalpurchaseqty = products::sum('quantity'); 
         $totalSell = sales::sum('sellingprice'); 
         $totalsalesqty = sales::sum('quantity'); 
-        $grandtotalpurchase = $totalPurchase * $totalpurchaseqty;
+        $grandtotalpurchase = products::sum('totalprice');
         $grandtotalsales = $totalSell * $totalsalesqty;
         $profit =  $grandtotalsales - $grandtotalpurchase; 
         // $total_drivers = drivers::count();

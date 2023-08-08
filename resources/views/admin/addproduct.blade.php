@@ -25,7 +25,7 @@
 
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Product Name </label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" pattern="[a-zA-Z\s]+"  name="name" placeholder="Eg. LG TV"  autofocus required>
+            <input type="text" class="form-control" id="productname" pattern="[a-zA-Z\s]+"  name="name" placeholder="Eg. LG TV" maxlength="30" autofocus required>
         </div>
         
         <div class="mb-3">
@@ -48,24 +48,57 @@
 
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Product Quantity : </label>
-            <input autocomplete="false" type="number" class="form-control" pattern="[0-9]+" id="exampleFormControlInput1" name="quantity"  placeholder="EG. 5,10" required>
+            <input autocomplete="false" type="number" class="form-control" pattern="[0-9]+" id="exampleFormControlInput1" max="100" name="quantity"  placeholder="EG. 5,10" required>
         </div>
 
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label"> Price (NPR) :</label>
-            <input autocomplete="false" type="number" class="form-control" id="exampleFormControlInput1" name="price"  placeholder="EG. Rs 1,000 (Per Unit/Piece)" required>
+            <input autocomplete="false" type="number" maxlength="6"  max="100000" class="form-control" id="price" name="price"  placeholder="EG. Rs 1,000 (Per Unit/Piece)" required>
         </div>
 
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Date : </label>
-            <input type="date" min="2022-02-01" max="2022-03-31" class="form-control" id="exampleFormControlInput1" name="date" required>
+            <input type="date" class="form-control" id="date" name="date" required>
         </div>
        
         
         <!-- Button trigger modal -->
-        <button type="submit" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModalLong">
+        <button id="btn" type="submit" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModalLong">
         Add Product
         </button>
     </form>  
+
+
+    <script>
+        const inputDate = document.getElementById('date');
+
+        const today = new Date();
+        inputDate.max = today.toISOString().split('T')[0]; // Set the max attribute of the input
+
+        const minDate = new Date(today);
+        minDate.setDate(today.getDate() - 14);
+        minDate.setHours(0, 0, 0, 0);
+        inputDate.min = minDate.toISOString().split('T')[0]; // Set the min attribute of the input
+
+        //name
+        const nameInput = document.getElementById('productname');
+        const errorDiv = nameInput.nextElementSibling; // Get the next sibling which is the error message div
+
+        nameInput.addEventListener('input', function() {
+            const enteredValue = nameInput.value;
+
+            // Check for repeated characters or random input
+            if (/(\w)\1{2,}/.test(enteredValue)) {
+                nameInput.classList.add('is-invalid'); // Apply Bootstrap's invalid styling
+                errorDiv.style.display = 'block'; // Show the error message
+            } else {
+                nameInput.classList.remove('is-invalid');
+                errorDiv.style.display = 'none';
+            }
+        });
+
+
+
+    </script>
 
 @stop

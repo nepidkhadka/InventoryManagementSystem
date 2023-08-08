@@ -16,9 +16,10 @@ class AddProductController extends Controller
     $quantity = $request->input('quantity');
     $price = $request->input('price');
     $date = $request->input('date');
+    $totalprice = $quantity * $price; 
 
-    DB::insert('insert into products (name,quantity,price,categorieid,supplierid,date) values (?,?,?,?,?,?)' 
-    , [$productname,  $quantity, $price, $categoryid, $supplierid, $date]);
+    DB::insert('insert into products (name,quantity,price,categorieid,supplierid,date,totalprice) values (?,?,?,?,?,?,?)' 
+    , [$productname,  $quantity, $price, $categoryid, $supplierid, $date, $totalprice]);
     
     return redirect('addproduct')->with('success','Product Added Sucessfully');
   }

@@ -25,7 +25,7 @@
 
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Category Name </label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" name="name" pattern="[a-zA-Z\s]+"  placeholder="Eg. Machinery" autofocus required>
+            <input type="text" class="form-control" maxlength="20" id="exampleFormControlInput1" name="name" pattern="[a-zA-Z\s]+"  placeholder="Eg. Machinery" autofocus required>
         </div>        
         <!-- Button trigger modal -->
         <button type="submit" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModalLong" required>
@@ -33,6 +33,23 @@
         </button>
     </form>
 
+    <script>
+        const nameInput = document.getElementById('exampleFormControlInput1');
+        const errorDiv = nameInput.nextElementSibling; // Get the next sibling which is the error message div
+
+        nameInput.addEventListener('input', function() {
+            const enteredValue = nameInput.value;
+
+            // Check for repeated characters or random input
+            if (/(\w)\1{2,}/.test(enteredValue)) {
+                nameInput.classList.add('is-invalid'); // Apply Bootstrap's invalid styling
+                errorDiv.style.display = 'block'; // Show the error message
+            } else {
+                nameInput.classList.remove('is-invalid');
+                errorDiv.style.display = 'none';
+            }
+        });
+    </script>
     
   
 @stop

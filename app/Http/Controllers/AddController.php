@@ -24,12 +24,12 @@ class AddController extends Controller
         $output .= '
        
                         
-        <label class="control-label col-md-3" for="time">Quantity</label>
+        <label class="control-label col-md-3" for="time">Quantity :</label>
         <div class="mb-3">
         <input type="number" name="quantity" value=""  min="1" max="'.$product->quantity.'" placeholder="'.$product->quantity.'" class="form-control" id="qty">
          </div> 
         
-        <label class="control-label col-md-3" for="time">Buy Price</label>
+        <label class="control-label col-md-3" for="time">Buy Price(Per Peice/Unit) :</label>
         <div class="mb-3">
         <input type="number" name="price" readonly value="'.$product->price.'" class="form-control" id="price"></div>
         ';

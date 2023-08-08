@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'ims',
+    'title' => 'IMS',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'logo' => '<b>ims</b>',
+    'logo' => '<b>Inventory</b>',
     'logo_img' => 'images/logo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
