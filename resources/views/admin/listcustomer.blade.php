@@ -20,7 +20,7 @@
 
     <hr>
 
-    <table class="table table-bordered table-striped">
+    <table id="myTable" class="table table-bordered table-striped">
             <thead class="table-dark">
               <tr>
                 <th scope="col">Customer ID</th>
@@ -44,4 +44,14 @@
     </table>
   
   
+@stop
+
+
+@section('js')
+
+<script> 
+   $(document).ready(function () {
+      $('#myTable').DataTable();
+   });
+</script>
 @stop
