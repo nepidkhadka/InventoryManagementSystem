@@ -13,7 +13,10 @@
 
  <hr>
 
- <table id="myTable" class="table table-bordered table-striped table-hover">
+ <table  id="myTable" class="table table-bordered table-striped table-hover">
+  <div class="my-3 d-flex flex-row-reverse" >
+    <button class="btn btn-success py-2 px-3 mx-1 ">Export PDF</button>
+  </div>
    <!-- class="thead-light" -->
    <thead class="bg-dark text-center">
      <tr>

@@ -14,6 +14,9 @@
     <hr>
 
     <table id="myTable" class="table table-bordered table-striped">
+    <div class="my-3 d-flex flex-row-reverse" >
+    <button class="btn btn-success py-2 px-3 mx-1 ">Export PDF</button>
+  </div>
             <thead class="table-dark">
               <tr>
                 <th scope="col">ID</th>
