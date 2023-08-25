@@ -15,6 +15,7 @@ use App\drivers;
 use App\User;
 use App\passenger;
 use App\reservation;
+use JeroenNoten\LaravelAdminLte\Components\Widget\Alert;
 
 class listcontroller extends Controller
 {
@@ -251,6 +252,11 @@ class listcontroller extends Controller
         $data->save();
         return redirect('updatesuppliers')->with('success','Suppliers Has Been Updated Sucessfully');
     }
+
+    function exportcategorypdf() {
+        
+    }
+
 }
 
 

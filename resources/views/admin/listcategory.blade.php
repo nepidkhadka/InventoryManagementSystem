@@ -1,5 +1,4 @@
  @extends('adminlte::page')
- @section('plugins.Datatables', true)
  @section('title', 'Category List')
 
  @section('content_header')
@@ -13,10 +12,10 @@
 
  <hr>
 
- <table  id="myTable" class="table table-bordered table-striped table-hover">
-  <div class="my-3 d-flex flex-row-reverse" >
-    <button class="btn btn-success py-2 px-3 mx-1 ">Export PDF</button>
-  </div>
+ <table id="myTable" class="table table-bordered table-striped table-hover">
+   <div class="my-3 d-flex flex-row-reverse">
+     <a id="printButton" class="btn btn-success py-2 px-3 mx-1 ">Export PDF</a>
+   </div>
    <!-- class="thead-light" -->
    <thead class="bg-dark text-center">
      <tr>
@@ -41,9 +40,18 @@
 
  @section('js')
 
-<script> 
-   $(document).ready(function () {
-      $('#myTable').DataTable();
+ <script>
+   $(document).ready(function() {
+     $('#myTable').DataTable();
    });
-</script>
-@stop
+ </script>
+
+ <script>
+   const printButton = document.getElementById('printButton');
+   printButton.addEventListener('click', () => {
+     window.print(); // Open the browser's print dialog
+   });
+ </script>
+
+
+ @stop

@@ -107,6 +107,9 @@ Route::post('/submitsales', 'SalesController@savesales')->name('savesales');
 
 
 
+//PDF Generation
+Route::get('/exportcategorypdf', 'listcontroller@exportcategorypdf')->name('exportcategorypdf');
+
 
 
 

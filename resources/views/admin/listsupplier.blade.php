@@ -21,6 +21,9 @@
     <hr>
 
     <table id="myTable" class="table table-striped">
+    <div class="my-3 d-flex flex-row-reverse">
+    <button id="printButton" class="btn btn-success py-2 px-3 mx-1 ">Export PDF</button>
+  </div>
             <thead class="table-dark">
               <tr>
                 <th scope="col">Supplier ID</th>
@@ -55,4 +58,11 @@
       $('#myTable').DataTable();
    });
 </script>
+
+<script>
+   const printButton = document.getElementById('printButton');
+   printButton.addEventListener('click', () => {
+     window.print(); // Open the browser's print dialog
+   });
+ </script>
 @stop
