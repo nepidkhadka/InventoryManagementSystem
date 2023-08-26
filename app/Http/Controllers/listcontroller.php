@@ -21,16 +21,6 @@ class listcontroller extends Controller
 {
     function showproduct()
     {
-        // $data = buses::all()->where('status', '1');
-        // return view('admin\listbus',['listbus'=>$data]);
-        // $data = products::all();
-        // return view('admin\listproduct',['listproduct'=>$data]);
-
-        // $data = products::with('categories')->get();
-        // dd($data);
-        // return view('admin\listproduct',['listproduct'=>$data]);
-        
-
         $data = products::with('categories','suppliers')->get();
         // dd($data);
         return view('admin\listproduct',['listproduct'=>$data]);

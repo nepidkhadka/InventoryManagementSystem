@@ -25,7 +25,7 @@
 
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Category Name </label>
-            <input type="text" class="form-control" maxlength="20" id="exampleFormControlInput1" name="name" pattern="[a-zA-Z\s]+"  placeholder="Eg. Machinery" autofocus required>
+            <input type="text" class="form-control" maxlength="15" id="exampleFormControlInput1" name="name" pattern="[a-zA-Z\s]+"  placeholder="Eg. Machinery" autofocus required>
         </div>        
         <!-- Button trigger modal -->
         <button type="submit" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModalLong" required>

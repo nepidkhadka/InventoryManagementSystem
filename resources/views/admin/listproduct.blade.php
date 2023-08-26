@@ -24,7 +24,8 @@
                 <th scope="col">Category</th>
                 <th scope="col">Supplier</th>
                 <th scope="col">Quantity(Unit)</th>
-                <th scope="col">Rate (NPR)</th>
+                <th scope="col">Rate Per Unit/Qty</th>
+                <th scope="col">Total Price (NPR)</th>
                 <!-- <th  colspan="2" scope="col">Rate(Buying & Selling)</th> -->
                 <th scope="col">Added Date</th>
               </tr>
@@ -40,6 +41,7 @@
                 <td>{{$listproduct->suppliers->company}}</td>
                 <td>{{$listproduct->quantity}}</td>
                 <td>Rs.{{$listproduct->price}}</td>
+                <td>Rs.{{$listproduct->totalprice}}</td>
                 <td>{{$listproduct->date}}</td>
               </tr>             
             </tbody>

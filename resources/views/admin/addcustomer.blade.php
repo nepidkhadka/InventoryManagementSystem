@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    <div class="alert alert-dark" role="alert">
+    <div id="validationMessage" class="alert alert-dark" role="alert">
         Fill up the below information to add customer
     </div>
 
@@ -47,7 +47,7 @@
     
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Phone Number </label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" name="phonenumber" pattern="[0-9]{1}[0-9]{1}[0-9]{1}[0-9]{1}[0-9]{1}[0-9]{1}[0-9]{1}[0-9]{1}[0-9]{1}[0-9]{1}" placeholder="EG. 9808465246" required>
+                <input type="text" class="form-control" id="numberInput" name="phonenumber" pattern="[0-9]{1}[0-9]{1}[0-9]{1}[0-9]{1}[0-9]{1}[0-9]{1}[0-9]{1}[0-9]{1}[0-9]{1}[0-9]{1}" placeholder="EG. 9808465246" required>
             </div>
           </form>
        
@@ -57,5 +57,36 @@
         Add Customer
         </button>
     </form>
+
+
+
+    <script>
+    let input = document.getElementById("numberInput");
+    input.addEventListener('input', () => {
+        const inputElement = document.getElementById("numberInput");
+        const inputValue = inputElement.value.trim();
+
+        const validationMessageElement = document.getElementById("validationMessage");
+
+        if (inputValue.startsWith("98") || inputValue.startsWith("97")) {
+            validationMessageElement.textContent = "Valid number!";
+            validationMessageElement.style.color = "white";
+            validationMessageElement.style.background = "green !important";
+            setTimeout(() => {
+                validationMessageElement.textContent = "Fill up the below information to add supplier";
+            }, 2000)
+
+        } else {
+            validationMessageElement.textContent = "Number should start with 98 or 97.";
+            validationMessageElement.style.color = "red";
+            setTimeout(() => {
+                validationMessageElement.style.color = "white";
+                validationMessageElement.textContent = "Fill up the below information to add supplier";
+            }, 2000)
+
+        }
+
+    })
+</script>
   
 @stop
