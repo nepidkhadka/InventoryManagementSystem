@@ -28,7 +28,7 @@
             <input type="text" class="form-control" maxlength="15" id="exampleFormControlInput1" name="name" pattern="[a-zA-Z\s]+"  placeholder="Eg. Machinery" autofocus required>
         </div>        
         <!-- Button trigger modal -->
-        <button type="submit" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModalLong" required>
+        <button id="btn" type="submit" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModalLong" required>
         Add Category
         </button>
     </form>
@@ -36,15 +36,21 @@
     <script>
         const nameInput = document.getElementById('exampleFormControlInput1');
         const errorDiv = nameInput.nextElementSibling; // Get the next sibling which is the error message div
+        const disablebtn = document.getElementById("btn");
+        console.log(disablebtn);
 
         nameInput.addEventListener('input', function() {
             const enteredValue = nameInput.value;
 
             // Check for repeated characters or random input
             if (/(\w)\1{2,}/.test(enteredValue)) {
+                disablebtn.disabled  = true;
+                disablebtn.style.background = "red"
                 nameInput.classList.add('is-invalid'); // Apply Bootstrap's invalid styling
-                errorDiv.style.display = 'block'; // Show the error message
+                errorDiv.style.display = 'block'; 
             } else {
+                disablebtn.disabled  = false;
+                disablebtn.style.background = "blue"
                 nameInput.classList.remove('is-invalid');
                 errorDiv.style.display = 'none';
             }

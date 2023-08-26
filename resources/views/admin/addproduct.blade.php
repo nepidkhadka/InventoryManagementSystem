@@ -48,7 +48,7 @@
 
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Product Quantity : </label>
-            <input autocomplete="false" type="number" class="form-control" pattern="[0-9]+" id="exampleFormControlInput1" max="100" name="quantity"  placeholder="EG. 5,10" required>
+            <input autocomplete="false" type="number" class="form-control" pattern="[0-9]+" id="exampleFormControlInput1" min="1" max="100" name="quantity"  placeholder="EG. 5,10" required>
         </div>
 
         <div class="mb-3">

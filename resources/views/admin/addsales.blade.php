@@ -55,7 +55,7 @@
 
         <div class="mb-3">
             <label for="discount" class="form-label"> Discount(In RS) : </label>
-            <input  type="number" class="form-control" id="discount" name="discount"  placeholder="EG. Rs 1,000" required>
+            <input  type="number" class="form-control" id="discount" name="discount"   placeholder="EG. Rs 1,000" required>
         </div>
 
         <div class="mb-3">

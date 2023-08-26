@@ -44,7 +44,7 @@
     </div>
 
     <!-- Button trigger modal -->
-    <button type="submit" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModalLong">
+    <button id="btn" type="submit" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModalLong">
         Add Supplier
     </button>
 </form>
@@ -55,29 +55,91 @@
     let input = document.getElementById("numberInput");
     input.addEventListener('input', () => {
         const inputElement = document.getElementById("numberInput");
+        const disablebtn = document.getElementById("btn");
         const inputValue = inputElement.value.trim();
-
         const validationMessageElement = document.getElementById("validationMessage");
 
         if (inputValue.startsWith("98") || inputValue.startsWith("97")) {
+
             validationMessageElement.textContent = "Valid number!";
             validationMessageElement.style.color = "white";
-            validationMessageElement.style.background = "green !important";
+            validationMessageElement.style.background = "green";
+            disablebtn.disabled = false;
+            disablebtn.style.background = "blue"
             setTimeout(() => {
+                validationMessageElement.style.background = "#212529";
                 validationMessageElement.textContent = "Fill up the below information to add supplier";
-            }, 1500)
+            }, 2000)
 
         } else {
             validationMessageElement.textContent = "Number should start with 98 or 97.";
             validationMessageElement.style.color = "red";
+            disablebtn.disabled = true;
+            disablebtn.style.background = "red"
             setTimeout(() => {
+                // validationMessageElement.style.background = "green";
                 validationMessageElement.style.color = "white";
                 validationMessageElement.textContent = "Fill up the below information to add supplier";
-            }, 1500)
+            }, 2000)
 
         }
 
     })
+
+    const nameInput = document.querySelectorAll('.form-control');
+    const errorDiv = nameInput.nextElementSibling; // Get the next sibling which is the error message div
+    const disablebtn = document.getElementById("btn");
+
+    nameInput.forEach((myinput) => {
+        myinput.addEventListener('input', function() {
+            console.log(myinput.value);
+            const enteredValue = myinput.value;
+
+            if (/(\w)\1{2,}/.test(enteredValue)) {
+                disablebtn.disabled = true;
+                disablebtn.style.background = "red"
+                myinput.classList.add('is-invalid'); // Apply Bootstrap's invalid styling
+                errorDiv.style.display = 'block';
+            } else {
+                disablebtn.disabled = false;
+                disablebtn.style.background = "blue"
+                myinput.classList.remove('is-invalid');
+                errorDiv.style.display = 'none';
+            }
+        });
+    })
+
+
+
+
+
+
+    // let input = document.getElementById("numberInput");
+    // input.addEventListener('input', () => {
+    //     const inputElement = document.getElementById("numberInput");
+    //     const inputValue = inputElement.value.trim();
+
+    //     const validationMessageElement = document.getElementById("validationMessage");
+
+    //     if (inputValue.startsWith("98") || inputValue.startsWith("97")) {
+    //         validationMessageElement.textContent = "Valid number!";
+    //         validationMessageElement.style.color = "white";
+    //         validationMessageElement.style.background = "green !important";
+    //         setTimeout(() => {
+    //             validationMessageElement.textContent = "Fill up the below information to add supplier";
+    //         }, 1500)
+
+    //     } else {
+    //         validationMessageElement.textContent = "Number should start with 98 or 97.";
+    //         validationMessageElement.style.color = "red";
+    //         setTimeout(() => {
+    //             validationMessageElement.style.color = "white";
+    //             validationMessageElement.textContent = "Fill up the below information to add supplier";
+    //         }, 1500)
+
+    //     }
+
+    // })
 </script>
 
 
