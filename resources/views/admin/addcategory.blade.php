@@ -37,7 +37,6 @@
         const nameInput = document.getElementById('exampleFormControlInput1');
         const errorDiv = nameInput.nextElementSibling; // Get the next sibling which is the error message div
         const disablebtn = document.getElementById("btn");
-        console.log(disablebtn);
 
         nameInput.addEventListener('input', function() {
             const enteredValue = nameInput.value;

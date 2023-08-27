@@ -9,9 +9,9 @@
 @section('content')
     {{-- <p>Add, Delete, Update Users</p> --}}
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModalLong">
+    <!-- <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModalLong">
     Add User
-    </button>
+    </button> -->
     <hr>
 
     @if(\Session::has('success'))
