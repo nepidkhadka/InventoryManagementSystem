@@ -7,6 +7,13 @@
 @stop
 
 @section('content')
+
+<style>
+  .toast {
+    backdrop-filter: blur(50px);
+    transition: .5s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  }
+</style>
 <div class="alert alert-dark" role="alert">
   The recorded product are listed below
 </div>
@@ -14,8 +21,9 @@
 <hr>
 
 <table id="myTable" class="table table-bordered table-striped">
-  <div class="my-3 d-flex flex-row-reverse">
+  <div class="my-3 d-flex flex">
     <button id="printButton" class="btn btn-success py-2 px-3 mx-1 ">Export PDF</button>
+    <button id="stockalert"  class="btn btn-danger py-2 px-3 mx-2 ">Stock Alert</button>
   </div>
   <thead class="table-dark">
     <tr>
@@ -48,17 +56,16 @@
   @endforeach
 </table>
 
-
-<div style="margin-top:1.5rem;" class="toast" data-autohide="false">
+<div class="toast" style="position: absolute; top: 65px; right: 15px;" data-autohide="false">
   <div class="toast-header">
     <strong class="mr-auto text-primary">Attention: Low Stock Alert </strong>
     <small class="text-muted">1 mins ago</small>
-    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
   </div>
   <div class="toast-body">
 
   </div>
 </div>
+
 
 
 
@@ -72,29 +79,44 @@
   });
 
   // Toast
-  const qty = document.querySelectorAll("#qty");
 
-  const mytoastbody = document.querySelector(".toast-body");
+ 
 
-  mytoast = document.querySelector(".toast");
+  const toastalert = () => {
+    const qty = document.querySelectorAll("#qty");
+    const mytoastbody = document.querySelector(".toast-body");
+    const mytoast = document.querySelector(".toast");
+    const qtyArray = Array.from(qty);
 
-  qty.forEach((items) => {
+    const toastAll = qtyArray.map(items => {
+      let secondFromFifth = items.previousElementSibling.previousElementSibling.previousElementSibling;
+      let Name = secondFromFifth.textContent;
+      let myqty = items.textContent;
 
-    let secondFromFifth = items.previousElementSibling.previousElementSibling.previousElementSibling;
-    let Name = secondFromFifth.textContent;
-    let myqty = items.textContent;
-    console.log(qty)
+      if (myqty <= 10) {
+        mytoast.classList.add("show");
+        // mytoastbody.textContent = `Product : (${Name}) Available Quantity : (${myqty}) .Please restock soon to avoid shortages.`;
+        setTimeout(() => {
+          mytoast.classList.remove("show");
+          // mytoast.style.zIndex = "-2";
+        }, 5000);
+      }
+      return (`
+        Product Name : <b> (${Name}) </b>  Available Quantity : <b> (${myqty}) </b>. Please restock soon to avoid shortages.
+      <hr>
+      `)
+    });
 
+    let toastreturn = document.querySelector(".toast-body");
+    toastreturn.innerHTML = toastAll.join('');
 
-    if (myqty <= 10) {
-      mytoast.classList.add("show");
-      mytoastbody.textContent = "Product : (" + Name + ") Available Quantity : (" + myqty + ") .Please restock soon to avoid shortages."
-      setTimeout(() => {
-        mytoast.classList.remove("show");
-      }, 6000)
-    }
+  }
 
-  })
+  toastalert();
+  clickalert = document.getElementById("stockalert");
+  clickalert.addEventListener("click", toastalert);
+  
+
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>

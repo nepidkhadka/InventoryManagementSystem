@@ -77,6 +77,8 @@ Route::get('/deletesales/{id}', 'listcontroller@deletesales')->name('deletesales
 
 Route::get('/deletesupplier/{id}', 'listcontroller@deletesupplier')->name('deletesupplier');
 
+Route::get('/deleteuser/{userid}', 'listcontroller@deleteuser')->name('deleteuser');
+
 Route::get('/edit/{categoryid}', 'listcontroller@editcategory')->name('editcategory');
 
 Route::get('/editproduct/{productid}', 'listcontroller@showeditproduct')->name('showeditproduct');

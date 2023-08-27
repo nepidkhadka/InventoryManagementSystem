@@ -25,7 +25,7 @@
 
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Product Name </label>
-            <input type="text" class="form-control" id="productname" pattern="[a-zA-Z\s]+"  name="name" placeholder="Eg. LG TV" maxlength="30" autofocus required>
+            <input type="text" class="form-control" id="productname" pattern="[a-zA-Z0-9\s]+"  name="name" placeholder="Eg. LG TV" maxlength="30" autofocus required>
         </div>
         
         <div class="mb-3">
@@ -53,7 +53,7 @@
 
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label"> Price (NPR) :</label>
-            <input autocomplete="false" type="number" maxlength="6"  max="100000" class="form-control" id="price" name="price"  placeholder="EG. Rs 1,000 (Per Unit/Piece)" required>
+            <input autocomplete="false" type="number" maxlength="6"  max="500000" class="form-control" id="price" name="price"  placeholder="EG. Rs 1,000 (Per Unit/Piece)" required>
         </div>
 
         <div class="mb-3">
