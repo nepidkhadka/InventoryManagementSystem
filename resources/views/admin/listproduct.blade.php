@@ -23,7 +23,7 @@
 <table id="myTable" class="table table-bordered table-striped">
   <div class="my-3 d-flex flex">
     <button id="printButton" class="btn btn-success py-2 px-3 mx-1 ">Export PDF</button>
-    <button id="stockalert"  class="btn btn-danger py-2 px-3 mx-2 ">Stock Alert</button>
+    <button id="stockalertbnt" class="btn btn-danger py-2 px-3 mx-2 ">Stock Alert</button>
   </div>
   <thead class="table-dark">
     <tr>
@@ -56,13 +56,12 @@
   @endforeach
 </table>
 
-<div class="toast" style="position: absolute; top: 65px; right: 15px;" data-autohide="false">
+<div class="toast" style="position: absolute; top: 65px; right: 20px;" data-autohide="false">
   <div class="toast-header">
     <strong class="mr-auto text-primary">Attention: Low Stock Alert </strong>
     <small class="text-muted">1 mins ago</small>
   </div>
   <div class="toast-body">
-
   </div>
 </div>
 
@@ -80,13 +79,13 @@
 
   // Toast
 
- 
-
   const toastalert = () => {
     const qty = document.querySelectorAll("#qty");
+    console.log(qty);
     const mytoastbody = document.querySelector(".toast-body");
     const mytoast = document.querySelector(".toast");
     const qtyArray = Array.from(qty);
+    console.log(qtyArray);
 
     const toastAll = qtyArray.map(items => {
       let secondFromFifth = items.previousElementSibling.previousElementSibling.previousElementSibling;
@@ -98,26 +97,23 @@
         // mytoastbody.textContent = `Product : (${Name}) Available Quantity : (${myqty}) .Please restock soon to avoid shortages.`;
         setTimeout(() => {
           mytoast.classList.remove("show");
-          // mytoast.style.zIndex = "-2";
         }, 5000);
-      }
-      return (`
+        return (`
         Product Name : <b> (${Name}) </b>  Available Quantity : <b> (${myqty}) </b>. Please restock soon to avoid shortages.
-      <hr>
+        <hr>
       `)
+      }
     });
-
     let toastreturn = document.querySelector(".toast-body");
     toastreturn.innerHTML = toastAll.join('');
-
   }
 
   toastalert();
-  clickalert = document.getElementById("stockalert");
-  clickalert.addEventListener("click", toastalert);
-  
+  clickalertbtn = document.getElementById("stockalertbnt");
+  clickalertbtn.addEventListener("click", toastalert);
 
 </script>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>

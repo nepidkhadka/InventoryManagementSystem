@@ -203,13 +203,12 @@ class listcontroller extends Controller
     {
         // dd($req->all());
         $data=products::find($req->id);
-        //$data->name=$req->name;
-       // $data->licenseno=$req->licenseno;
         $data->name=$req->name;
         $data->categorieid=$req->categorieid;
-        $data->quantity=$req->quantity;
-        $data->price=$req->price;
+        $data->quantity=$req->quantity + $req->input('quantity');
+        $data->price=$req->price +  $req->input('price');
         $data->date=$req->date;
+        $data->totalprice = $data->quantity*$data->price; 
         $data->save();
         return redirect('updateproduct')->with('success','Product Has Been Updated Sucessfully');
 
