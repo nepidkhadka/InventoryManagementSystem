@@ -24,6 +24,7 @@
   <div class="my-3 d-flex flex">
     <button id="printButton" class="btn btn-success py-2 px-3 mx-1 ">Export PDF</button>
     <button id="stockalertbnt" class="btn btn-danger py-2 px-3 mx-2 ">Stock Alert</button>
+    <button id="higheststockalertbnt" class="btn btn-warning py-2 px-3 mx-2 ">High Stock</button>
   </div>
   <thead class="table-dark">
     <tr>
@@ -73,19 +74,17 @@
 @section('js')
 
 <script>
+  //Jquery DataTable
   $(document).ready(function() {
     $('#myTable').DataTable();
   });
 
   // Toast
-
   const toastalert = () => {
     const qty = document.querySelectorAll("#qty");
-    console.log(qty);
     const mytoastbody = document.querySelector(".toast-body");
     const mytoast = document.querySelector(".toast");
     const qtyArray = Array.from(qty);
-    console.log(qtyArray);
 
     const toastAll = qtyArray.map(items => {
       let secondFromFifth = items.previousElementSibling.previousElementSibling.previousElementSibling;
@@ -107,11 +106,52 @@
     let toastreturn = document.querySelector(".toast-body");
     toastreturn.innerHTML = toastAll.join('');
   }
-
   toastalert();
   clickalertbtn = document.getElementById("stockalertbnt");
   clickalertbtn.addEventListener("click", toastalert);
 
+
+  //Finding Highest Stock Product
+  let highqtyarray = [];
+  let highproductarray = [];
+  let highestqty = "";
+  let highestqtyproduct = "";
+  let indexofhighestqty = "";
+
+  const highstock = () => {
+    // console.log("Initial :", highstockqty);
+    const qty = document.querySelectorAll("#qty");
+    const mytoastbody = document.querySelector(".toast-body");
+    const mytoast = document.querySelector(".toast");
+    const qtyArray = Array.from(qty);
+
+
+    const highstockalert = qtyArray.map((items, i) => {
+      let secondFromFifth = items.previousElementSibling.previousElementSibling.previousElementSibling;
+      let name = secondFromFifth.textContent;
+      let myqty = +items.innerText;
+      highqtyarray.push(myqty);
+      highproductarray.push(name);
+      console.log(highqtyarray);
+      // console.log("Max QTY Output :", Math.max(...highqtyarray));
+      // higestqty = Math.max.apply(Math, highqtyarray);
+      // highqtyarray.findIndex()
+    })
+
+    highestqty = Math.max.apply(Math, highqtyarray);
+    indexofhighestqty = highqtyarray.indexOf(highestqty);
+    console.log(indexofhighestqty);
+    console.log(highproductarray);
+
+  
+    alert("Highest Available Quantity is: " + highestqty);
+    highqtyarray = [];
+    console.log("After Zero: ", highqtyarray);
+  }
+
+  // highstock();
+  higheststockalertbnt = document.getElementById("higheststockalertbnt");
+  higheststockalertbnt.addEventListener("click", highstock);
 </script>
 
 
