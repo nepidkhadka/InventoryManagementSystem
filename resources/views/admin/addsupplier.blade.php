@@ -25,7 +25,7 @@
 
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Company Name </label>
-        <input type="text" class="form-control" id="exampleFormControlInput1" pattern="[a-zA-Z\s]+" name="companyname" placeholder="Eg. ABC Suppliers" maxlength="20" autofocus required>
+        <input type="text" class="form-control" id="exampleFormControlInput1" pattern="[a-zA-Z\s]+" name="companyname" placeholder="Eg. ABC Suppliers" maxlength="30" autofocus required>
     </div>
 
     <div class="mb-3">
