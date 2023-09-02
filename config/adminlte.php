@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'IMS',
+    'title' => 'Mero Inventory ',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -45,9 +45,9 @@ return [
     |
     */
 
-    'logo' => '<b>Inventory</b>',
-    'logo_img' => 'images/logo.png',
-    'logo_img_class' => 'brand-image img-circle elevation-3',
+    'logo' => '<b>Mero Inventory</b>',
+    'logo_img' => 'images/logo1.png',
+    'logo_img_class' => 'brand-image img-circle elevation-8',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
     'logo_img_alt' => 'AdminLTE',

@@ -242,10 +242,6 @@ class listcontroller extends Controller
         return redirect('updatesuppliers')->with('success','Suppliers Has Been Updated Sucessfully');
     }
 
-    function exportcategorypdf() {
-        
-    }
-
 }
 
 

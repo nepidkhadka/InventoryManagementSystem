@@ -3,7 +3,7 @@
 @section('title', 'Home')
 
 @section('content_header')
-<h1>Hello, Welcome to Inventory Management System</h1>
+<h1>Hello, Welcome to  " Mero Inventory "</h1>
 @stop
 
 @section('content')
@@ -14,7 +14,7 @@
   </div>
   <div class="card-body">
     <blockquote class="blockquote my-0">
-      Please navigate with menus for various inventory management operation.
+      Please navigate with menus for various inventory management & control operation.
       <!-- <p></p> -->
     </blockquote>
     <hr>
@@ -61,7 +61,7 @@
       Keep your software secure.
     </div>
     <hr>
-    🚀 Your Inventory Management Solution 🚀
+    🚀 Your Complete Inventory Management & Control Solution 🚀
     <hr>
 
     </p>

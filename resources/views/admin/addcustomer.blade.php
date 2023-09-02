@@ -29,10 +29,10 @@
         <div class="mb-3">
             <div class="form-row">
                 <div class="col">
-                    <input type="text" id="exampleFormControlInput1" class="form-control" name="firstname" pattern="[a-zA-Z]+" placeholder="First name" required autofocus>
+                    <input type="text" id="exampleFormControlInput1" class="form-control" name="firstname" pattern="[a-zA-Z]+" minlength="6" maxlength="10" placeholder="First name" required autofocus>
                 </div>
                 <div class="col">
-                    <input type="text" id="exampleFormControlInput1" class="form-control" name="lastname" pattern="[a-zA-Z]+"" required placeholder=" Last name">
+                    <input type="text" id="exampleFormControlInput1" class="form-control" name="lastname" pattern="[a-zA-Z]+"" minlength="2" maxlength="12" required placeholder=" Last name">
                 </div>
             </div>
         </div>
@@ -40,7 +40,7 @@
             <div class="col">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Address </label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" name="address" placeholder="EG. Lubhu" pattern="[a-zA-Z\s]+" required>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" name="address" placeholder="EG. Lubhu" minlength="5" pattern="[a-zA-Z\s]+" required>
                     <div class="col">
                     </div>
                 </div>

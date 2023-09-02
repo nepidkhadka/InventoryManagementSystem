@@ -34,28 +34,9 @@ class AddController extends Controller
         <input type="number" name="price" readonly value="'.$product->price.'" class="form-control" id="price"></div>
         ';
 
-        
-        // $output .= '
-                  // </div>';
-
         return response($output);
     }
-     
-    // public function savereservation(Request $request)
-    // {
-  
-    //   $pid = $request->input('pid');
-    //   $busid = $request->input('busid');
-    //   $routesid = $request->input('routesid');
-    //   $date = $request->input('date');
-    //   $seatno = $request->input('seatno');
-    //   $status = $request->input('status');
 
-    //   DB::insert('insert into reservations (passengerid,busid,routesid ,date,seatno) values (?,?,?,?,?)' 
-    //   , [$pid, $busid, $routesid,  $date, $seatno]);
-      
-    //   return redirect('reservebus')->with('success','Reservation has been made Sucessfully');
-    // }
 
     public function fetchcategorydata()
     {
