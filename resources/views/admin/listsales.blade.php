@@ -32,6 +32,7 @@
       <th scope="col">Quantity</th>
       <th scope="col">Discount</th>
       <th scope="col">Total</th>
+      <th scope="col">Date</th>
     </tr>
   </thead>
 
@@ -45,6 +46,7 @@
       <td>{{$salesdata->quantity}}</td>
       <td>Rs. {{$salesdata->discount}}</td>
       <td>Rs. {{$salesdata->total}}</td>
+      <td>{{$salesdata->date}}</td>
     </tr>
   </tbody>
   @endforeach
@@ -75,7 +77,7 @@
      var element = document.getElementById('myTable');
 
      var opt = {
-       margin: 0.5,
+       margin: 0.2,
        filename: 'Saleslist.pdf',
        image: {
          type: 'jpeg',

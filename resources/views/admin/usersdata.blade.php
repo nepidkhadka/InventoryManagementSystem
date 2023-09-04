@@ -9,9 +9,9 @@
 @section('content')
     {{-- <p>Add, Delete, Update Users</p> --}}
     <!-- Button trigger modal -->
-    <!-- <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModalLong">
+    <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModalLong">
     Add User
-    </button> -->
+    </button>
     <hr>
 
     @if(\Session::has('success'))
@@ -56,7 +56,7 @@
                     <div class="form-group">
                           <label for="email">Email Address</label>
                           <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email">
-                          <small id="emailHelp" class="form-text text-muted">BRS will never share users email with anyone else.</small>
+                          <small id="emailHelp" class="form-text text-muted">We will never share users email with anyone else.</small>
                     </div>
                     <div class="form-group">
                         <label for="contactnumber">Password</label>
@@ -76,8 +76,8 @@
 
     <h3>Registered Users List</h3>
     <hr>
-    <table class="table table-hover">
-        <thead>
+    <table class="table table-hover table-striped">
+        <thead class="table-dark">
           <tr>
             <th scope="col">ID</th>
             <th scope="col">Name</th>

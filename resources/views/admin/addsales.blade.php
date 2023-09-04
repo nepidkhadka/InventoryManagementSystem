@@ -62,7 +62,12 @@
             <label for="exampleFormControlInput1" class="form-label">Total Price(In Rs) :</label>
             <input type="number" pattern = "[0-9]" class="form-control" id="total" name="total" required>
         </div>
-       
+
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Date : </label>
+            <input type="date" class="form-control" id="date" name="date" required>
+        </div>
+              
         
         <!-- Button trigger modal -->
         <button type="submit" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModalLong">
@@ -107,6 +112,19 @@
             var total = (qty * price);
             return grand = (total - discount);
         }
+
+
+        //date
+        const inputDate = document.getElementById('date');
+
+        const today = new Date();
+        inputDate.max = today.toISOString().split('T')[0]; // Set the max attribute of the input
+
+        const minDate = new Date(today);
+        minDate.setDate(today.getDate() - 10);
+        minDate.setHours(0, 0, 0, 0);
+        inputDate.min = minDate.toISOString().split('T')[0]; // Set the min attribute of the input
+
 
  </script>
 
