@@ -181,12 +181,12 @@
         quality: 1
       },
       html2canvas: {
-        scale: 1
+        scale: 1.2
       },
       jsPDF: {
         unit: 'in',
         format: 'letter',
-        orientation: 'portrait',
+        orientation: 'landscape',
         precision: '12'
       }
     };

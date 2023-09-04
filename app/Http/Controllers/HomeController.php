@@ -78,13 +78,12 @@ class HomeController extends Controller
         $totalPurchase = products::sum('price'); 
         $totalpurchaseqty = products::sum('quantity'); 
         $totalSell = sales::sum('sellingprice'); 
+        $totaldiscount = sales::sum('discount'); 
         $totalsalesqty = sales::sum('quantity'); 
         $grandtotalpurchase = products::sum('totalprice');
         $grandtotalsales = $totalSell * $totalsalesqty;
-        $profit =  $grandtotalsales - $grandtotalpurchase; 
-        // $total_drivers = drivers::count();
-        // $added_passengers = drivers::count();
-        // $total_reservation = reservation::count();
+        $profit =  $grandtotalsales - $grandtotalpurchase - $totaldiscount; 
+        
 
         return view('admin/dashboard',compact('total_categories','total_products', 'total_users','total_customers','total_suppliers','total_sales','total_stock','grandtotalpurchase','grandtotalsales','profit'));
         // ,'total_drivers','added_passengers','total_reservation'

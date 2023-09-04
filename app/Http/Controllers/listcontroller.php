@@ -10,11 +10,8 @@ use App\customers;
 use App\suppliers;
 use App\sales;
 use App\routes;
-use App\updatebus;
-use App\drivers;
 use App\User;
-use App\passenger;
-use App\reservation;
+
 use JeroenNoten\LaravelAdminLte\Components\Widget\Alert;
 
 class listcontroller extends Controller
@@ -38,10 +35,18 @@ class listcontroller extends Controller
         $totalPurchase = products::sum('price'); 
         $totalpurchaseqty = products::sum('quantity'); 
         $totalSell = sales::sum('sellingprice'); 
+        $totaldiscount = sales::sum('discount'); 
         $totalsalesqty = sales::sum('quantity'); 
-        $grandtotalpurchase = $totalPurchase * $totalpurchaseqty;
+        $grandtotalpurchase = products::sum('totalprice');
         $grandtotalsales = $totalSell * $totalsalesqty;
-        $profit =  $grandtotalsales - $grandtotalpurchase; 
+        $profit =  $grandtotalsales - $grandtotalpurchase - $totaldiscount; 
+        // $totalPurchase = products::sum('price'); 
+        // $totalpurchaseqty = products::sum('quantity'); 
+        // $totalSell = sales::sum('sellingprice'); 
+        // $totalsalesqty = sales::sum('quantity'); 
+        // $grandtotalpurchase = $totalPurchase * $totalpurchaseqty;
+        // $grandtotalsales = $totalSell * $totalsalesqty;
+        // $profit =  $grandtotalsales - $grandtotalpurchase; 
         $allproduct = products::all();
         return view('admin\listprofitloss',compact('profit','grandtotalpurchase','grandtotalsales'));
       }

@@ -115,7 +115,7 @@
   <span class="info-box-icon"><i class="far fa-check-square"></i></span>
   <div class="info-box-content">
     <span class="info-box-text">Total Purchase</span>
-    <span class="info-box-number">Rs.{{ $grandtotalpurchase }}</span>
+    <span id="purchaseprice"info-box-number">{{ $grandtotalpurchase }}</span>
   </div>
 </div>
 
@@ -123,7 +123,7 @@
   <span class="info-box-icon"><i class="far fa-minus-square"></i></span>
   <div class="info-box-content">
     <span class="info-box-text">Total Sells</span>
-    <span class="info-box-number">Rs.{{ $grandtotalsales }}</span>
+    <span id="salesprice"info-box-number">{{ $grandtotalsales }}</span>
   </div>
 </div>
 
@@ -131,8 +131,47 @@
   <span class="info-box-icon"><i class="far fa-copy"></i></span>
   <div class="info-box-content">
     <span class="info-box-text">Total Profit/Loss</span>
-    <span class="info-box-number">Rs.{{ $profit }}</span>
+    <span id="profitprice"info-box-number">{{ $profit }}</span>
   </div>
 </div>
+
+
+<script>
+
+const formatNumberWithCommas = (number) => {
+    const numberString = String(number);
+    
+    if (numberString.length === 5) {
+        return numberString.substring(0, 2) + ',' + numberString.substring(2);
+    } else if (numberString.length === 6) {
+        return numberString.substring(0, 1) + ',' + numberString.substring(1, 3) + ',' + numberString.substring(3);
+    } else if (numberString.length === 7) {
+        return numberString.substring(0, 2) + ',' + numberString.substring(2, 4) + ',' + numberString.substring(4);
+    } else {
+        return numberString;
+    }
+}
+
+//purchase
+const purchasepricenode = document.getElementById("purchaseprice");
+const purchasepricedata = purchasepricenode.textContent;
+const formattedpurchasepricedata = formatNumberWithCommas(purchasepricedata);
+purchasepricenode.textContent = "Rs." + formattedpurchasepricedata;
+
+//sales
+const salespricenode = document.getElementById("salesprice");
+const salespricedata = salespricenode.textContent;
+const formattedsalespricedata = formatNumberWithCommas(salespricedata);
+salespricenode.textContent = "Rs." + formattedsalespricedata;
+
+//profti&sales
+const profitlosspricenode = document.getElementById("profitprice");
+const profitlosspricedata = profitlosspricenode.textContent;
+const formattedprofitlosspricedata = formatNumberWithCommas(profitlosspricedata);
+profitlosspricenode.textContent = "Rs." + formattedprofitlosspricedata;
+
+
+
+</script>
 
 @stop
