@@ -104,15 +104,15 @@
       <td>
         <a class="btn btn-outline-danger btn-sm" href={{"deleteuser/".$usersdata['id']}}> Delete </a>
       </td>
-      <td class="btn btn-sm btn-info w-50">
-        @if ($usersdata->role == 1)
-        Admin
-        @elseif ($usersdata->role == 0)
-        User
-        @else
-        @endif
-      </td>
+      <td id="tabledata" >
+        <?php if ($usersdata->role == '1') { ?>
+          <a href="{{url('/updaterole',$usersdata->id)}}" class="btn btn-outline-success btn-sm w-50">Admin</a>
 
+        <?php } else { ?>
+          <a href="{{url('/updaterole',$usersdata->id)}}" class="btn btn-outline-info btn-sm w-50 ">User</a>
+        <?php } ?>
+      </td>
+      
     </tr>
   </tbody>
   @endforeach
