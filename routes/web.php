@@ -15,8 +15,10 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-
 Auth::routes();
+
+
+Route::middleware(['auth'])->group(function () {
 
 Route::get('/dashboard', 'HomeController@dashcount')->name('dashboard');
 
@@ -26,9 +28,10 @@ Route::get('/users', 'listController@showusers')->name('showusers');
 
 Route::post('/adduser', 'usersController@adduser')->name('adduser');
 
+//No Permission
+Route::get('/nopermission', 'HomeController@nopermission')->name('nopermission');
 
 //   ALL ADD 
-
 Route::get('/addcategory', 'HomeController@addcategory')->name('addcategory');
 
 Route::get('/addcustomer', 'HomeController@addcustomer')->name('addcustomer');
@@ -41,8 +44,7 @@ Route::get('/addsales', 'AddController@fetchproductcustomerdata')->name('fetchpr
 
 Route::get('/search/product', 'AddController@searchProduct')->name('searchProduct');
 
-    // ALL LIST
-
+// ALL LIST
 Route::get('/listcategory', 'listController@showcategory')->name('showcategory');
 
 Route::get('/listproduct', 'listController@showproduct')->name('showproduct');
@@ -55,8 +57,23 @@ Route::get('/listsales', 'listController@showsales')->name('showsales');
 
 Route::get('/listprofitloss', 'listController@listprofitloss')->name('listprofitloss');
 
-    // ALl UPDATE and DELELE
 
+// ALL SUBMIT 
+Route::post('/submitproduct', 'AddProductController@saveproduct')->name('saveproduct');
+
+Route::post('/submitcategory', 'AddCategoryController@savecategory')->name('savecategory');
+
+Route::post('/submitcustomer', 'CustomerControllers@savecustomer')->name('savecustomer');
+
+Route::post('/submitsupplier', 'SuppliersControllers@savesupplier')->name('savesupplier');
+
+Route::post('/submitsales', 'SalesController@savesales')->name('savesales');
+
+});
+
+Route::middleware(['auth', 'isAdmin'])->group(function () {
+
+// ALl UPDATE and DELELE
 Route::get('/updatecategory', 'listcontroller@updatecategory')->name('updatecategory');
 
 Route::get('/updateproduct', 'listcontroller@showupdateproduct')->name('showupdateproduct');
@@ -95,22 +112,6 @@ Route::post('/submiteditcustomer', 'listcontroller@submiteditcustomer')->name('s
 
 Route::post('/submiteditsupplier', 'listcontroller@submiteditsupplier')->name('submiteditsupplier');
 
-    // ALL SUBMIT 
-
-Route::post('/submitproduct', 'AddProductController@saveproduct')->name('saveproduct');
-
-Route::post('/submitcategory', 'AddCategoryController@savecategory')->name('savecategory');
-
-Route::post('/submitcustomer', 'CustomerControllers@savecustomer')->name('savecustomer');
-
-Route::post('/submitsupplier', 'SuppliersControllers@savesupplier')->name('savesupplier');
-
-Route::post('/submitsales', 'SalesController@savesales')->name('savesales');
-
-
-
-
-
-
+});
 
 

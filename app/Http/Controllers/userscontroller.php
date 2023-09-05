@@ -25,9 +25,10 @@ class userscontroller extends Controller
       $name = $request->input('name');
       $email = $request->input('email');
       $password = bcrypt($request->input('password'));
+      $role = ($request->input('role'));
   
-      DB::insert('insert into users (name,email,password) values (?,?,?)' 
-      , [$name,  $email, $password]);
+      DB::insert('insert into users (name,email,role,password) values (?,?,?,?)' 
+      , [$name,  $email,$role, $password]);
       
       return redirect('users')->with('success','User Added Sucessfully');
     }

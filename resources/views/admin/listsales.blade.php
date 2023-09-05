@@ -33,6 +33,7 @@
       <th scope="col">Discount</th>
       <th scope="col">Total</th>
       <th scope="col">Date</th>
+      <th scope="col">User</th>
     </tr>
   </thead>
 
@@ -47,6 +48,7 @@
       <td>Rs. {{$salesdata->discount}}</td>
       <td>Rs. {{$salesdata->total}}</td>
       <td>{{$salesdata->date}}</td>
+      <td>{{$salesdata->User->name}}</td>
     </tr>
   </tbody>
   @endforeach
@@ -81,10 +83,10 @@
       filename: 'Saleslist.pdf',
       image: {
         type: 'jpeg',
-        quality: 1
+        quality: 1.5
       },
       html2canvas: {
-        scale: 1
+        scale: 1.5
       },
       jsPDF: {
         unit: 'in',

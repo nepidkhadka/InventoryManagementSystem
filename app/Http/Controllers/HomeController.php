@@ -64,6 +64,11 @@ class HomeController extends Controller
     {
         return view('admin/addsupplier');
     }
+    
+    public function nopermission()
+    {
+        return view('admin/nopermission');
+    }
 
     public function dashcount()
     {

@@ -26,7 +26,7 @@ class listcontroller extends Controller
 
     function showsales()
     {
-        $data = sales::with('products','customers')->orderBy('id','desc')->get();
+        $data = sales::with('products','customers', 'User')->orderBy('id','desc')->get();
         // dd($data);
         return view('admin\listsales',['salesdata'=>$data]);
     }

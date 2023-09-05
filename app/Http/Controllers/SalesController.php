@@ -11,6 +11,7 @@ class SalesController extends Controller
     public function savesales(Request $request)
     {
       // dd($request->all());
+      $userid = auth()->user()->id;
       $product = $request->input('product');
       $pro=products::find($product);
       // dd($pro);
@@ -19,14 +20,15 @@ class SalesController extends Controller
       $sellingprice = $request->input('sellingprice');
       $discount = $request->input('discount');
       $total = $request->input('total');
+      $date = $request->input('date');
       
       $pro=products::find($product);
         $pro->quantity=($pro->quantity - $quantity);
         $pro->save();
 
 
-      DB::insert('insert into sales (	product_id,	customer_id,quantity,sellingprice,discount,total) values (?,?,?,?,?,?)' 
-      , [$product, $customer, $quantity,$sellingprice ,$discount,$total]);
+      DB::insert('insert into sales (	product_id,	customer_id,user_id,quantity,sellingprice,discount,total,date) values (?,?,?,?,?,?,?,?)' 
+      , [$product, $customer, $userid, $quantity, $sellingprice, $discount, $total, $date]);
       
       
       
