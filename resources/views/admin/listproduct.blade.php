@@ -123,37 +123,47 @@
     const mytoastbody = document.querySelector(".toast-body");
     const mytoast = document.querySelector(".toast");
     const qtyArray = Array.from(qty);
+    if (qty.length > 0) {
+      const highstockalert = qtyArray.map((items, i) => {
+        let name = items.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
+        let myqty = +items.innerText;
+        highqtyarray.push(myqty);
+        highproductarray.push(name);
+        // console.log("Max QTY Output :", Math.max(...highqtyarray));
+        // higestqty = Math.max.apply(Math, highqtyarray);
+        // highqtyarray.findIndex()
+      })
 
-    const highstockalert = qtyArray.map((items, i) => {
-      let name = items.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
-      let myqty = +items.innerText;
-      highqtyarray.push(myqty);
-      highproductarray.push(name);
-      // console.log("Max QTY Output :", Math.max(...highqtyarray));
-      // higestqty = Math.max.apply(Math, highqtyarray);
-      // highqtyarray.findIndex()
-    })
 
+      highestqty = Math.max.apply(Math, highqtyarray);
+      indexofhighestqty = highqtyarray.indexOf(highestqty);
+      highestqtyproduct = highproductarray[indexofhighestqty];
 
-    highestqty = Math.max.apply(Math, highqtyarray);
-    indexofhighestqty = highqtyarray.indexOf(highestqty);
-    highestqtyproduct = highproductarray[indexofhighestqty];
+      // alert("Highest Available Quantity is: " + highestqty + " Product Name : " + highestqtyproduct);
+      highqtyarray = [];
+      highproductarray = [];
 
-    // alert("Highest Available Quantity is: " + highestqty + " Product Name : " + highestqtyproduct);
-    highqtyarray = [];
-    highproductarray = [];
+      mytoast.classList.add("show");
+      setTimeout(() => {
+        mytoast.classList.remove("show");
+      }, 5000);
 
-    mytoast.classList.add("show");
-    setTimeout(() => {
-      mytoast.classList.remove("show");
-    }, 5000);
+      let highquantityalertdata =
+        `The Highest Available Quantity Product Is : <br> <b> (${highestqtyproduct}) </b> & Available Quantity : <b> (${highestqty}) </b>`
 
-    let highquantityalertdata =
-      `The Highest Available Quantity Product Is : <br> <b> (${highestqtyproduct}) </b> & Available Quantity : <b> (${highestqty}) </b>`
-
-    let titlefortoast = 'Highest Quantity Product'
-    mytoastbody.innerHTML = highquantityalertdata;
-    toasttitle.innerHTML = titlefortoast;
+      let titlefortoast = 'Highest Quantity Product'
+      mytoastbody.innerHTML = highquantityalertdata;
+      toasttitle.innerHTML = titlefortoast;
+    } else {
+      mytoast.classList.add("show");
+      setTimeout(() => {
+        mytoast.classList.remove("show");
+      }, 5000);
+      let highquantityalertdata = "No Products Available !!! <br> Please add atleast one products and try again.<hr>"
+      let titlefortoast = 'No Product Availability'
+      mytoastbody.innerHTML = highquantityalertdata;
+      toasttitle.innerHTML = titlefortoast;
+    }
   }
 
   higheststockalertbnt = document.getElementById("higheststockalertbnt");

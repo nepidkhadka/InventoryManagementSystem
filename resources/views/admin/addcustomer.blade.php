@@ -29,7 +29,7 @@
         <div class="mb-3">
             <div class="form-row">
                 <div class="col">
-                    <input type="text" id="exampleFormControlInput1" class="form-control" name="firstname" pattern="[a-zA-Z]+" minlength="6" maxlength="10" placeholder="First name" required autofocus>
+                    <input type="text" id="exampleFormControlInput1" class="form-control" name="firstname" pattern="[a-zA-Z]+" minlength="3" maxlength="10" placeholder="First name" required autofocus>
                 </div>
                 <div class="col">
                     <input type="text" id="exampleFormControlInput1" class="form-control" name="lastname" pattern="[a-zA-Z]+"" minlength="2" maxlength="12" required placeholder=" Last name">
@@ -77,7 +77,7 @@
             disablebtn.style.background = "blue"
             setTimeout(() => {
                 validationMessageElement.style.background = "#212529";
-                validationMessageElement.textContent = "Fill up the below information to add supplier";
+                validationMessageElement.textContent = "Fill up the below information to add customer";
             }, 2000)
 
         } else {
@@ -88,7 +88,7 @@
             setTimeout(() => {
                 // validationMessageElement.style.background = "green";
                 validationMessageElement.style.color = "white";
-                validationMessageElement.textContent = "Fill up the below information to add supplier";
+                validationMessageElement.textContent = "Fill up the below information to add customer";
             }, 2000)
 
         }
